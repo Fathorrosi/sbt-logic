@@ -4,7 +4,6 @@ class MainComponent extends Component {
     render() {
 
         var nameList = ['kita', 'atik', 'tika', 'aku', 'kia', 'makan', 'kua']
-
         var result = [];
 
         function ProcessWordList() {
@@ -23,7 +22,25 @@ class MainComponent extends Component {
                 tempListResult = [];
             }
             deleteDuplicate();
-            return <p>{JSON.stringify(result)}</p>
+            return (
+                <div>
+                    <p style={{marginBottom: -20}}>[</p>
+                    <div style={{ paddingLeft: 10 }}>
+                        <div style={{ whiteSpace: "pre-line" }}>{print()}</div>
+                    </div>
+                    <p style={{marginTop: 0}}>[</p>
+                </div>
+            )
+        }
+
+        function print() {
+            let temp = '';
+            for (let i = 0; i < result.length; i++) {
+                temp = '' ? temp = JSON.stringify(result[i]) :
+                    temp = temp + "\n" + JSON.stringify(result[i])
+            }
+            console.log(temp)
+            return temp
         }
 
         function isAnagram(word1, word2) {
